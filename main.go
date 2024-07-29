@@ -41,7 +41,7 @@ func main() {
 				continue
 			}
 
-			panic(err)
+			slog.Error("message", err)
 		}
 
 		workID++

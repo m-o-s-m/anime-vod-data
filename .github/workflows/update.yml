@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: 'm-o-s-m/anime-vod-data-private'
+          token: ${{ secrets.PULL_ANIME_VOD_DATA_PRIVATE }}
           sparse-checkout: |
             dist/data.json
           sparse-checkout-cone-mode: false

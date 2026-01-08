@@ -5,8 +5,7 @@ on:
     branches: ["master"]
 
   schedule:
-    # JST 4:00 AM
-    - cron: '*/10 * * * *'
+    - cron: '*/30 * * * *'
 
   workflow_dispatch:
 
@@ -35,7 +34,6 @@ jobs:
 
       - name: Copy
         run: cp -p source/dist/data.json main/dist/
-
 
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v7

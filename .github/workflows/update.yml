@@ -13,8 +13,17 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    permissions:
+       contents: write
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout 
+        uses: actions/checkout@v6
+        with:
+          path: main
+
+      - name: Checkout source
         uses: actions/checkout@v6
         with:
           repository: 'm-o-s-m/anime-vod-data-private'
@@ -22,8 +31,14 @@ jobs:
           sparse-checkout: |
             dist/data.json
           sparse-checkout-cone-mode: false
+          path: source
+
+      - name: Copy
+        run: cp -p source/dist/data.json main/dist/
+
 
       - name: Push
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
+          repository: ./main
           commit_message: '🔄 Update'
